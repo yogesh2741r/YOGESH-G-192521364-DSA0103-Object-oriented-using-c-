@@ -1,0 +1,23 @@
+TASK A1 — BILL PROCESSING PSEUDOCODE
+ALGORITHM CalculateDailyTotal
+INPUT: bills[0..n-1], each element references an abstract Bill
+OUTPUT: dailyTotal
+BEGIN
+    dailyTotal ← 0
+    FOR i ← 0 TO n-1 DO
+        dailyTotal ← dailyTotal + bills[i].total()
+    END FOR
+    RETURN dailyTotal
+END
+
+TASK A3 — PAYER APPLICATION PSEUDOCODE
+ALGORITHM SettleBill
+INPUT: bill, payer
+BEGIN
+    covered ← payer.amountCovered(bill)
+    patientAmount ← bill.total() - covered
+    IF covered < 0 OR covered > bill.total() THEN
+        THROW BillingError
+    END IF
+    RETURN (covered, patientAmount)
+END
